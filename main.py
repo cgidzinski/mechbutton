@@ -12,22 +12,22 @@ LED_INVERT     = False   # True to invert the signal (when using NPN transistor 
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 def colorWipe(strip, color, wait_ms=50):
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, color)
-        strip.show()
+	for i in range(strip.numPixels()):
+		strip.setPixelColor(i, color)
+		strip.show()
 time.sleep(wait_ms/1000.0)
 
 def rainbow(strip, wait_ms=20, iterations=1):
-	i = 0
-    strip.setPixelColor(i, 0)
-    strip.show()
-    time.sleep(wait_ms/1000.0)
-    strip.setPixelColor(i, 128)
-    strip.show()
-    time.sleep(wait_ms/1000.0)
-    strip.setPixelColor(i, 255)
-    strip.show()
-    time.sleep(wait_ms/1000.0)
+	pos = 0
+	strip.setPixelColorRGB(pos, 0, 0, 255)
+	strip.show()
+	time.sleep(wait_ms/1000.0)
+	strip.setPixelColorRGB(pos, 0,255,0)
+	strip.show()
+	time.sleep(wait_ms/1000.0)
+	strip.setPixelColorRGB(pos, 255,0,0)
+	strip.show()
+	time.sleep(wait_ms/1000.0)
 
 
 
@@ -35,14 +35,14 @@ def rainbow(strip, wait_ms=20, iterations=1):
 if __name__ == '__main__':
 
 
-    strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-    strip.begin()
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+	strip.begin()
 
-    try:
-        while True:
+	try:
+		while True:
  
-            rainbow(strip)
+			rainbow(strip)
 
 
-    except KeyboardInterrupt:
-            colorWipe(strip, Color(0,0,0), 10)
+	except KeyboardInterrupt:
+			colorWipe(strip, Color(0,0,0), 10)
