@@ -1,11 +1,12 @@
-import time
+import os
+from time import sleep
 from neopixel import *
 import argparse
-
+import RPi.GPIO as GPIO
 # LED strip configuration:
+SW_PIN         = 13
 LED_COUNT      = 1      # Number of LED pixels.
-# LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
-LED_PIN        = 21      # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
+LED_PIN        = 12      # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
@@ -35,13 +36,15 @@ def rainbow(strip, wait_ms=20, iterations=1):
 # Main program logic follows:
 if __name__ == '__main__':
 
-
+	GPIO.setmode(GPIO.BCM)
+	GPIO.setup(SW_PIN, GPIO.IN)
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 	strip.begin()
 
 	try:
 		while True:
- 
+			if (GPIO.input(SW_PIN)== False):
+        		os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3 &')
 			rainbow(strip)
 
 
