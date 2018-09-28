@@ -1,4 +1,5 @@
 import os
+import time
 from time import sleep
 from neopixel import *
 import argparse
