@@ -45,7 +45,7 @@ if __name__ == '__main__':
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3 &')
-			rainbow(strip)
+			# rainbow(strip)
 
 
 	except KeyboardInterrupt:
