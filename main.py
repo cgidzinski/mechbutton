@@ -46,9 +46,10 @@ if __name__ == '__main__':
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				print "Button"
+				rainbow(strip)
+				os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 				time.sleep(1000)
-				# os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3 &')
-			rainbow(strip)
+
 
 
 	except KeyboardInterrupt:
