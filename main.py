@@ -30,15 +30,15 @@ def rainbow(strip):
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 0, 0, 255)
 		strip.show()
-		time.sleep(100)
+		time.sleep(.1)
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 0,255,0)
 		strip.show()
-		time.sleep(100)
+		time.sleep(.1)
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 255,0,0)
 		strip.show()
-		time.sleep(100)
+		time.sleep(.1)
 
 def standby(strip):
 	for pos in range(5):
