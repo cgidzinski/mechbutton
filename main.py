@@ -23,7 +23,7 @@ def colorWipe(strip, color, wait_ms=50):
 		time.sleep(wait_ms/1000.0)
 
 def sound():
-	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
+	os.system('mpg123 ./sounds/test.mp3')
 
 def rainbow(strip):
 	for x in range(10):
@@ -54,8 +54,12 @@ if __name__ == '__main__':
 	try:
 		while True:
 			if (GPIO.input(SW_PIN)== False):
-				print "Button"	
-				rainbow(strip)			
+				print "Button"
+				t = Thread(target=sound)
+				t.daemon = True
+				t.start()
+				while t.isAlive():
+					rainbow(strip)			
 			standby(strip)
 
 
