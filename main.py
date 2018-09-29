@@ -27,7 +27,7 @@ def sound():
 	return
 
 def rainbow(strip):
-	for x in range(10):
+	for x in range(1):
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 0, 0, 255)
 		strip.show()
