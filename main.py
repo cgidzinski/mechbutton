@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 
 # LED strip configuration:
 SW_PIN         = 13
-LED_COUNT      = 1      # Number of LED pixels.
+LED_COUNT      = 5      # Number of LED pixels.
 LED_PIN        = 12      # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
