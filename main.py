@@ -54,7 +54,8 @@ if __name__ == '__main__':
 	try:
 		while True:
 			if (GPIO.input(SW_PIN)== False):
-				print "Button"				
+				print "Button"	
+				rainbow(strip)			
 			standby(strip)
 
 
