@@ -28,7 +28,7 @@ def sound():
 def ledThread(strip,trigger):
 	if trigger:
 		rainbow(strip)
-	else
+	else:
 		strip.setPixelColorRGB(pos, 0, 0, 255)
 		strip.show()
 
