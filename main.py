@@ -24,6 +24,7 @@ def colorWipe(strip, color, wait_ms=50):
 
 def sound():
 	os.system('mpg123 ./sounds/test.mp3')
+	os.system('mpg123 -R QUIT')
 
 def rainbow(strip):
 	for x in range(10):
@@ -61,7 +62,5 @@ if __name__ == '__main__':
 				while t.isAlive():
 					rainbow(strip)			
 			standby(strip)
-
-
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
