@@ -51,11 +51,11 @@ if __name__ == '__main__':
 				print "Button"
 				# soundThread = sound()
 				# soundThread.start()
-				rainbow(strip)
+				# rainbow(strip)
 				# time.sleep(2500)
 				# soundThread.stop()
-			for pos in range(5):
-				strip.setPixelColorRGB(pos, 0, 0, 255)
-			strip.show()
+			# for pos in range(5):
+			# 	strip.setPixelColorRGB(pos, 0, 0, 255)
+			# strip.show()
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
