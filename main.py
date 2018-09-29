@@ -54,7 +54,9 @@ if __name__ == '__main__':
 				rainbow(strip)
 				time.sleep(2500)
 				soundThread.stop()
-			strip.setPixelColorRGB(pos, 0, 0, 255)
+			for pos in range(5):
+				strip.setPixelColorRGB(pos, 0, 0, 255)
+			strip.show()
 			strip.show()
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
