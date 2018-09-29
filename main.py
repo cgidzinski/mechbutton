@@ -54,7 +54,11 @@ if __name__ == '__main__':
 				rainbow(strip)
 				# t = Thread(target=rainbow, args=(strip,))
 				# t.start()
-			strip.setPixelColorRGB(pos, 0, 0, 255)
+			strip.setPixelColorRGB(0, 0, 0, 255)
+			strip.setPixelColorRGB(1, 0, 0, 255)
+			strip.setPixelColorRGB(2, 0, 0, 255)
+			strip.setPixelColorRGB(3, 0, 0, 255)
+			strip.setPixelColorRGB(4, 0, 0, 255)
 			strip.show()
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
