@@ -1,9 +1,11 @@
 import os
 import time
 from time import sleep
+import threading
 from neopixel import *
 import argparse
 import RPi.GPIO as GPIO
+
 # LED strip configuration:
 SW_PIN         = 13
 LED_COUNT      = 1      # Number of LED pixels.
@@ -20,37 +22,39 @@ def colorWipe(strip, color, wait_ms=50):
 		strip.show()
 		time.sleep(wait_ms/1000.0)
 
-def rainbow(strip, wait_ms=20, iterations=1):
-	pos = 0
-	strip.setPixelColorRGB(pos, 0, 0, 255)
-	strip.show()
-	time.sleep(wait_ms/1000.0)
-	strip.setPixelColorRGB(pos, 0,255,0)
-	strip.show()
-	time.sleep(wait_ms/1000.0)
-	strip.setPixelColorRGB(pos, 255,0,0)
-	strip.show()
-	time.sleep(wait_ms/1000.0)
+def sound(threading.Thread):
+	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
-
+def rainbow(strip):
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 0, 0, 255)
+	strip.show()
+	time.sleep(100)
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 0,255,0)
+	strip.show()
+	time.sleep(100)
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 255,0,0)
+	strip.show()
+	time.sleep(100)
 
 # Main program logic follows:
 if __name__ == '__main__':
-
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(SW_PIN, GPIO.IN)
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 	strip.begin()
-
 	try:
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				print "Button"
+				soundThread = sound(name = "Sound Thread")
+				soundThread.start()
 				rainbow(strip)
-				os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
-				time.sleep(1000)
-
-
-
+				time.sleep(2500)
+				soundThread.stop()
+			strip.setPixelColorRGB(pos, 0, 0, 255)
+			strip.show()
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
