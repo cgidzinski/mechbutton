@@ -15,7 +15,7 @@ LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
 LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
-
+trigger = 0
 def colorWipe(strip, color, wait_ms=50):
 	for i in range(strip.numPixels()):
 		strip.setPixelColor(i, color)
@@ -25,7 +25,7 @@ def colorWipe(strip, color, wait_ms=50):
 def sound():
 	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
-def ledThread(strip,trigger):
+def ledThread(strip):
 	if trigger:
 		rainbow(strip)
 	else:
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 	GPIO.setup(SW_PIN, GPIO.IN)
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 	strip.begin()
-	trigger = 0
+
 	t = Thread(target=ledThread, args=(strip,))
 	t.start()
 	try:
