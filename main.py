@@ -1,4 +1,4 @@
-import os
+import os, random
 import time
 from time import sleep
 from threading import Thread
@@ -23,24 +23,23 @@ def colorWipe(strip, color, wait_ms=50):
 		time.sleep(wait_ms/1000.0)
 
 def sound():
-	os.system('mpg123 ./sounds/test.mp3')
+	os.system('mpg123 ./sounds/'+random.choice(os.listdir("./sounds/")))
 	return
-	# os.system('pkill mpg123')
 
 def rainbow(strip):
 	for x in range(10):
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 0, 0, 255)
 		strip.show()
-		time.sleep(.1)
+		time.sleep(.05)
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 0,255,0)
 		strip.show()
-		time.sleep(.1)
+		time.sleep(.05)
 		for pos in range(5):
 			strip.setPixelColorRGB(pos, 255,0,0)
 		strip.show()
-		time.sleep(.1)
+		time.sleep(.05)
 
 def standby(strip):
 	for pos in range(5):
