@@ -26,19 +26,19 @@ def sound():
 	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
 def rainbow(strip):
-	for x in range(10):
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 0, 0, 255)
-		strip.show()
-		time.sleep(100)
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 0,255,0)
-		strip.show()
-		time.sleep(100)
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 255,0,0)
-		strip.show()
-		time.sleep(100)
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 0, 0, 255)
+	strip.show()
+	time.sleep(100)
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 0,255,0)
+	strip.show()
+	time.sleep(100)
+	for pos in range(5):
+		strip.setPixelColorRGB(pos, 255,0,0)
+	strip.show()
+	time.sleep(100)
+		
 def standby(strip):
 	for pos in range(5):
 		strip.setPixelColorRGB(pos, 0, 0, 255)
