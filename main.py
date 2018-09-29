@@ -25,19 +25,12 @@ def colorWipe(strip, color, wait_ms=50):
 def sound():
 	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
-def ledThread(strip):
-	for pos in range(5):
+def ledThread(strip,trigger):
+	if trigger:
+		rainbow(strip)
+	else
 		strip.setPixelColorRGB(pos, 0, 0, 255)
-	strip.show()
-	time.sleep(100)
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 0,255,0)
-	strip.show()
-	time.sleep(100)
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 255,0,0)
-	strip.show()
-	time.sleep(100)
+		strip.show()
 
 def rainbow(strip):
 	for pos in range(5):
@@ -59,14 +52,14 @@ if __name__ == '__main__':
 	GPIO.setup(SW_PIN, GPIO.IN)
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 	strip.begin()
+	trigger = 0
 	t = Thread(target=ledThread, args=(strip,))
 	t.start()
 	try:
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				print "Button"
-			# for pos in range(5):
-			# 	strip.setPixelColorRGB(pos, 0, 0, 255)
-			# strip.show()
+				trigger = 1
+			trigger = 0
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
