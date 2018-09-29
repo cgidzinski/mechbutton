@@ -42,7 +42,7 @@ def rainbow(strip):
 
 def standby(strip):
 	for pos in range(strip.numPixels()):
-		strip.setPixelColorRGB(pos, 128, 0, 128)
+		strip.setPixelColorRGB(pos, 255, 0, 255)
 	strip.show()
 
 # Main program logic follows:
