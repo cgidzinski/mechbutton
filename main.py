@@ -52,7 +52,7 @@ if __name__ == '__main__':
 				# soundThread = sound()
 				# soundThread.start()
 				rainbow(strip)
-				time.sleep(2500)
+				# time.sleep(2500)
 				# soundThread.stop()
 			for pos in range(5):
 				strip.setPixelColorRGB(pos, 0, 0, 255)
