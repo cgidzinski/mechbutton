@@ -27,23 +27,22 @@ def sound():
 	return
 
 def rainbow(strip):
-	for x in range(1):
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 0, 0, 255)
-		strip.show()
-		time.sleep(.05)
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 0,255,0)
-		strip.show()
-		time.sleep(.05)
-		for pos in range(5):
-			strip.setPixelColorRGB(pos, 255,0,0)
-		strip.show()
-		time.sleep(.05)
+	for pos in range(strip.numPixels()):
+		strip.setPixelColorRGB(pos, 0, 0, 255)
+	strip.show()
+	time.sleep(.05)
+	for pos in range(strip.numPixels()):
+		strip.setPixelColorRGB(pos, 0,255,0)
+	strip.show()
+	time.sleep(.05)
+	for pos in range(strip.numPixels()):
+		strip.setPixelColorRGB(pos, 255,0,0)
+	strip.show()
+	time.sleep(.05)
 
 def standby(strip):
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 0, 0, 255)
+	for pos in range(strip.numPixels()):
+		strip.setPixelColorRGB(pos, 0, 128, 128)
 	strip.show()
 
 # Main program logic follows:
