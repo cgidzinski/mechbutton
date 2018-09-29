@@ -49,14 +49,13 @@ if __name__ == '__main__':
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				print "Button"
-				soundThread = sound()
-				soundThread.start()
+				# soundThread = sound()
+				# soundThread.start()
 				rainbow(strip)
 				time.sleep(2500)
-				soundThread.stop()
+				# soundThread.stop()
 			for pos in range(5):
 				strip.setPixelColorRGB(pos, 0, 0, 255)
-			strip.show()
 			strip.show()
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
