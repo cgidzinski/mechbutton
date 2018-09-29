@@ -26,24 +26,24 @@ def sound():
 	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
 def rainbow(strip):
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 0, 0, 255)
-	strip.show()
-	time.sleep(100)
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 0,255,0)
-	strip.show()
-	time.sleep(100)
-	for pos in range(5):
-		strip.setPixelColorRGB(pos, 255,0,0)
-	strip.show()
-	time.sleep(100)
-		
+	for x in range(10):
+		for pos in range(5):
+			strip.setPixelColorRGB(pos, 0, 0, 255)
+		strip.show()
+		time.sleep(100)
+		for pos in range(5):
+			strip.setPixelColorRGB(pos, 0,255,0)
+		strip.show()
+		time.sleep(100)
+		for pos in range(5):
+			strip.setPixelColorRGB(pos, 255,0,0)
+		strip.show()
+		time.sleep(100)
+
 def standby(strip):
 	for pos in range(5):
 		strip.setPixelColorRGB(pos, 0, 0, 255)
 	strip.show()
-	time.sleep(100)
 
 # Main program logic follows:
 if __name__ == '__main__':
@@ -51,18 +51,12 @@ if __name__ == '__main__':
 	GPIO.setup(SW_PIN, GPIO.IN)
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 	strip.begin()
-	triggered = 0
 	try:
 		while True:
 			if (GPIO.input(SW_PIN)== False):
-				print "Button"
-				triggered = 1
-				
-			# if triggered == 0:
-			# 	standby(strip)
-			# if triggered == 1:
-				rainbow(strip)
-				triggered = 0
+				print "Button"				
+			standby(strip)
+
 
 	except KeyboardInterrupt:
 			colorWipe(strip, Color(0,0,0), 10)
