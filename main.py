@@ -22,7 +22,7 @@ def colorWipe(strip, color, wait_ms=50):
 		strip.show()
 		time.sleep(wait_ms/1000.0)
 
-def sound(threading.Thread):
+def sound():
 	os.system('mpg123 http://ice1.somafm.com/u80s-128-mp3')
 
 def rainbow(strip):
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 		while True:
 			if (GPIO.input(SW_PIN)== False):
 				print "Button"
-				soundThread = sound(name = "Sound Thread")
+				soundThread = sound()
 				soundThread.start()
 				rainbow(strip)
 				time.sleep(2500)
