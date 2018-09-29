@@ -58,9 +58,9 @@ if __name__ == '__main__':
 				print "Button"
 				triggered = 1
 				
-			if triggered == 0:
-				standby(strip)
-			if triggered == 1:
+			# if triggered == 0:
+			# 	standby(strip)
+			# if triggered == 1:
 				rainbow(strip)
 				triggered = 0
 
