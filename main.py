@@ -24,7 +24,8 @@ def colorWipe(strip, color, wait_ms=50):
 
 def sound():
 	os.system('mpg123 ./sounds/test.mp3')
-	os.system('mpg123 -R QUIT')
+	return
+	# os.system('pkill mpg123')
 
 def rainbow(strip):
 	for x in range(10):
