@@ -54,6 +54,10 @@ if __name__ == '__main__':
 				# rainbow(strip)
 				# time.sleep(2500)
 				# soundThread.stop()
+				strip.setPixelColorRGB(0, 0, 255, 0)
+				strip.show()
+			strip.setPixelColorRGB(0, 0, 0, 255)
+			strip.show()
 			# for pos in range(5):
 			# 	strip.setPixelColorRGB(pos, 0, 0, 255)
 			# strip.show()
